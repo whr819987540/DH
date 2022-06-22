@@ -1,3 +1,4 @@
+from pickle import NONE
 from random import randint
 
 
@@ -44,6 +45,20 @@ def get_S(p: int, local_private_key: int, remote_public_key: int):
     根据大素数p、本地私钥、远程公钥生成对称秘钥S
     """
     return (remote_public_key ** local_private_key) % p
+
+
+def AES256_GCM_encrypt():
+    """
+    AES256加密，GCM模式
+    """
+    return "data"
+
+
+def AES256_GCM_decrypt():
+    """
+    AES256加解密，GCM模式
+    """
+    return None
 
 
 if __name__ == "__main__":

@@ -46,34 +46,26 @@ def main():
     }
     connect_socket.send(json.dumps(data).encode())
     
+    # 计算对称秘钥
     S = get_S(p,a,B)
     print(f"p = {p}, g = {g}")
     print(f"[CLEINT] private_key = {a}, public_key = {A}")
     print(f"[SERVER] public_key = {B}")
     print(f"[DH] S = {S}")
     
-    connect_socket.close()
+    # 传输内容
+    data = "hello world"
+    # AES256-GCM加密
+    encrypt_data = AES256_GCM_encrypt()
+    # 发送加密数据
+    data = {
+        "msg":encrypt_data
+    }
+    connect_socket.send(json.dumps(data).encode())
     
+    connect_socket.close()
     
     
 if __name__ == "__main__":
     init()
     main()
-
-    # 创建一个socket对象
-    s1 = socket.socket()
-    s1.connect(('10.236.197.1',9999))
-    # 不断发送和接收数据
-    while 1:
-        send_data = input("客户端要发送的信息：")
-        # socket传递的都是bytes类型的数据,需要转换一下
-        if send_data=="exit":
-            info="exit"
-            s1.send(info.encode())
-            break
-        else:
-            s1.send(send_data.encode())
-            # 接收数据，最大字节数1024,对返回的二进制数据进行解码
-            text = s1.recv(1024).decode()
-            print("服务端发送的数据：{}".format(text))
-            print("------------------------------")
