@@ -18,7 +18,7 @@ def init():
 def main():
     listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
     print((server_config['ip'], server_config['port']))
-    listen_socket.bind((server_config['ip'], server_config['port']))
+    listen_socket.bind((server_config['server_ip'], server_config['port']))
     listen_socket.listen(5)
 
     while input("input q to quit, other to continue ...\n") != 'q':

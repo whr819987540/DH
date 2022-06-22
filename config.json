@@ -2,6 +2,7 @@
     "server": {
         "ip": "",
         "port": 9999,
-        "bufsize": 4096
+        "bufsize": 4096,
+        "server_ip": "10.236.197.1"
     }
 }

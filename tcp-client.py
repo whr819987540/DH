@@ -22,7 +22,7 @@ def get_local_ip():
 
 def main():
     connect_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM,0)
-    connect_socket.connect((get_local_ip(),server_config['port']))
+    connect_socket.connect((server_config['server_ip'],server_config['port']))
     
     # 生成大素数p
     p = generate_big_prime()
